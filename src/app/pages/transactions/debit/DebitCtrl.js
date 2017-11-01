@@ -16,13 +16,15 @@
             user: null,
             amount: null,
             reference: "",
-            confirm_on_create: true,
+            status: 'Complete',
             metadata: "",
             currency: null,
             subtype: "",
             note: "",
             account: ""
         };
+
+        $scope.transactionStatus = ['Complete','Initiating','Pending','Failed','Deleted'];
         $scope.onGoingTransaction = false;
         $scope.showAdvancedOption = false;
         $scope.showView = 'createDebit';
@@ -77,7 +79,7 @@
                 user: null,
                 amount: null,
                 reference: "",
-                confirm_on_create: true,
+                status: 'Complete',
                 metadata: "",
                 currency: $rootScope.selectedCurrency.code,
                 subtype: "",
@@ -100,7 +102,7 @@
                 user: $scope.debitData.user,
                 amount: currencyModifiers.convertToCents($scope.debitData.amount, $rootScope.selectedCurrency.divisibility),
                 reference: $scope.debitData.reference,
-                confirm_on_create: $scope.debitData.confirm_on_create,
+                status: $scope.debitData.status,
                 metadata: $scope.debitData.metadata,
                 currency: $scope.debitData.currency,
                 subtype: $scope.debitData.subtype,

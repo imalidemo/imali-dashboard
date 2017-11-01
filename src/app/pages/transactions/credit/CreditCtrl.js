@@ -15,13 +15,16 @@
             user: null,
             amount: null,
             reference: "",
-            confirm_on_create: true,
+            status: 'Complete',
             metadata: "",
             currency: null,
             subtype: "",
             note: "",
             account: ""
         };
+
+        $scope.transactionStatus = ['Complete','Initiating','Pending','Failed','Deleted'];
+
         sharedResources.getSubtypes().then(function (res) {
             res.data.data = res.data.data.filter(function (element) {
                 return element.tx_type == 'credit';
@@ -77,7 +80,7 @@
                 user: null,
                 amount: null,
                 reference: "",
-                confirm_on_create: true,
+                status: 'Complete',
                 metadata: "",
                 currency: $rootScope.selectedCurrency.code,
                 subtype: "",
@@ -100,7 +103,7 @@
                 user: $scope.creditData.user,
                 amount: currencyModifiers.convertToCents($scope.creditData.amount,$rootScope.selectedCurrency.divisibility),
                 reference: $scope.creditData.reference,
-                confirm_on_create: $scope.creditData.confirm_on_create,
+                status: $scope.creditData.status,
                 metadata: $scope.creditData.metadata,
                 currency: $scope.creditData.currency,
                 subtype: $scope.creditData.subtype,

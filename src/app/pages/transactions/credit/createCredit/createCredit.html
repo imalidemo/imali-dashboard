@@ -38,11 +38,12 @@
                   <textarea rows="4" type="text" ng-model="creditData.metadata" class="form-control"  placeholder='e.g. {"Hello" : "World"}'></textarea>
               </div>
               <div class="divider">
-                <label class="checkbox-inline custom-checkbox nowrap">
-                    <input type="checkbox"  ng-model="creditData.confirm_on_create">
-                    <span>Confirm on create</span>
-                </label>
-                <i uib-tooltip-html="'<strong>When this option is disabled, a pending transaction will be created, requiring an update or manual “completion” via the dashboard.</strong>'" class="ion-information-circled"></i>
+                  <div class="form-group">
+                      <label><strong>Status</strong></label>
+                      <select class="form-control pointer" ng-model="creditData.status"
+                              ng-options="status for status in transactionStatus">
+                      </select>
+                  </div>
               </div>
             </div>
         </div>
