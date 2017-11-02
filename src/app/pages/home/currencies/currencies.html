@@ -19,7 +19,7 @@
                          ng-class="{'long-text': (currency.code.length > 4), 'very-long-text': (currency.code.length > 6)}">{{currency.code}}</div>
                 </div>
             </td>
-            <td class="transactions-list-element" width="12%" ng-bind="currency.balance_total | currencyModifiersFilter: currency.divisibility"></td>
+            <td class="transactions-list-element" width="12%" ng-bind="currency.available_balance_total | currencyModifiersFilter: currency.divisibility"></td>
             <td class="transactions-list-element" width="12%"><a class="pointer" ng-click="goToPendingTransactions(currency,'transactions.debit.pendingDebit')" ng-bind="currency.sum_debits_pending | currencyModifiersFilter: currency.divisibility"></a></td>
             <td class="transactions-list-element" width="12%"><a class="pointer" ng-click="goToPendingTransactions(currency,'transactions.credit.pendingCredit')" ng-bind="currency.sum_credits_pending | currencyModifiersFilter: currency.divisibility"></a></td>
             <td class="transactions-list-element" width="12%" ng-bind="currency.balance_24h | currencyModifiersFilter: currency.divisibility"></td>

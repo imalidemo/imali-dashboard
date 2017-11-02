@@ -24,7 +24,7 @@
             account: ""
         };
 
-        $scope.transactionStatus = ['Complete','Initiating','Pending','Failed','Deleted'];
+        $scope.transactionStatus = ['Complete','Pending','Failed','Deleted'];
         $scope.onGoingTransaction = false;
         $scope.showAdvancedOption = false;
         $scope.showView = 'createDebit';

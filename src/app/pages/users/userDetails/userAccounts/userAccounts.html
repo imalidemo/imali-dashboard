@@ -5,14 +5,14 @@
         <table class="table fees-table table-condensed table-striped user-details-table">
             <tr>
                 <th><strong>Currency</strong></th>
-                <th><strong>Balance</strong></th>
+                <th><strong>Available balance</strong></th>
                 <th></th>
             </tr>
 
             <tr ng-repeat="acc in account.currencies">
                 <td class="user-accounts-list-element" ng-bind="acc.currency.code"></td>
-                <td class="user-accounts-list-element" title="{{acc.balance  | currencyModifiersFilter: acc.currency.divisibility}}"
-                    ng-bind="acc.balance  | currencyModifiersFilter: acc.currency.divisibility">
+                <td class="user-accounts-list-element" title="{{acc.available_balance  | currencyModifiersFilter: acc.currency.divisibility}}"
+                    ng-bind="acc.available_balance  | currencyModifiersFilter: acc.currency.divisibility">
                 </td>
                 <td class="rehive-table-row-last-child">
                     <button ng-click="goToSettings(acc.currency.code,account.reference)"

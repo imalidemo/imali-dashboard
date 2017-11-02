@@ -23,7 +23,7 @@
             account: ""
         };
 
-        $scope.transactionStatus = ['Complete','Initiating','Pending','Failed','Deleted'];
+        $scope.transactionStatus = ['Complete','Pending','Failed','Deleted'];
 
         sharedResources.getSubtypes().then(function (res) {
             res.data.data = res.data.data.filter(function (element) {
