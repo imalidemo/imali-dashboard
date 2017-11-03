@@ -5,7 +5,7 @@
         .controller('RegisterCtrl', RegisterCtrl);
 
     /** @ngInject */
-    function RegisterCtrl($rootScope,$scope,$http,toastr,environmentConfig,errorHandler,$location,cookieManagement) {
+    function RegisterCtrl($rootScope,$scope,$http,environmentConfig,errorHandler,$location,cookieManagement) {
 
         //var vm = this;
         $scope.path = $location.path();

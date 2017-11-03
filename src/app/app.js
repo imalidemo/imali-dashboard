@@ -80,15 +80,15 @@ angular.module('BlurAdmin', [
                     }
                 };
 
-                //using to check if user has at least one currency
-                var getCompanyCurrencies = function(token){
-                    if(token){
-                        $http.get(environmentConfig.API + '/admin/currencies/?enabled=true', {
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Authorization': token
-                            }
-                        }).then(function (res) {
+            //using to check if user has at least one currency
+            var getCompanyCurrencies = function(token){
+                if(token){
+                    $http.get(environmentConfig.API + '/admin/currencies/?enabled=true', {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': token
+                        }
+                    }).then(function (res) {
                             if (res.status === 200) {
                                 if(res.data.data.results.length == 0){
                                     $location.path('currency/add/initial');
@@ -99,6 +99,8 @@ angular.module('BlurAdmin', [
                                     } else {
                                         $rootScope.userFullyVerified = false;
                                     }
+
+                                    $window.sessionStorage.currenciesList = JSON.stringify(res.data.data.results);
                                 }
                             }
                         }).catch(function (error) {
@@ -146,5 +148,5 @@ angular.module('BlurAdmin', [
             || newUrl.indexOf('/multi-factor/sms') > 0 || newUrl.indexOf('/multi-factor/verify') > 0){
                 $rootScope.securityConfigured = false;
             }
-        }
+        };
     });

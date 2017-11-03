@@ -4,7 +4,7 @@
     angular.module('BlurAdmin.pages.settings.transactionsSwitches')
         .controller('TransactionsSwitchesCtrl', TransactionsSwitchesCtrl);
 
-    function TransactionsSwitchesCtrl($scope,environmentConfig,$uibModal,$rootScope,toastr,$http,_,
+    function TransactionsSwitchesCtrl($scope,environmentConfig,$uibModal,toastr,$http,_,
                                       sharedResources,cookieManagement,errorHandler,$window) {
 
         var vm = this;

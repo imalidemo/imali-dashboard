@@ -5,7 +5,7 @@
         .controller('UsersCtrl', UsersCtrl);
 
     /** @ngInject */
-    function UsersCtrl($rootScope,$scope,environmentConfig,$http,typeaheadService,
+    function UsersCtrl($state,$scope,environmentConfig,$http,typeaheadService,
                        cookieManagement,errorHandler,Upload,$window,toastr,serializeFiltersService) {
 
         var vm = this;
@@ -68,12 +68,6 @@
         $scope.getUsersEmailTypeahead = typeaheadService.getUsersEmailTypeahead();
         $scope.getUsersMobileTypeahead = typeaheadService.getUsersMobileTypeahead();
 
-        $rootScope.$watch('selectedCurrency',function(){
-            if($rootScope.selectedCurrency && $rootScope.selectedCurrency.code) {
-                vm.getCompanyCurrencies();
-            }
-        });
-
         $scope.showFilters = function () {
             $scope.showingFilters = !$scope.showingFilters;
         };
@@ -100,6 +94,15 @@
             $scope.usersSearchParams.searchCurrency.code = 'Currency';
             $scope.currencyOptions = vm.currenciesList;
         };
+        vm.getCompanyCurrencies();
+
+        if($state.params.currencyCode){
+            vm.currenciesList.forEach(function (element) {
+                if(element.code ==  $state.params.currencyCode){
+                    $scope.usersSearchParams.searchCurrency = element;
+                }
+            });
+        }
 
         vm.getUsersUrl = function(){
 

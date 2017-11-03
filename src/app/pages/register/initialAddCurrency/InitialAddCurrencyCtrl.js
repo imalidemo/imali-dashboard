@@ -81,7 +81,6 @@
                     if($rootScope.intialCurrency && $rootScope.haveCompanyName && $rootScope.userVerified) {
                         $rootScope.userFullyVerified = true;
                     }
-                    $rootScope.selectedCurrency = res.data.data;
                     toastr.success('Initial currency added successfully');
                     $location.path('/home');
                     $rootScope.$pageFinishedLoading = true;
