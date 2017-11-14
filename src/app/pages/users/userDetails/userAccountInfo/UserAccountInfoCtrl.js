@@ -143,7 +143,7 @@
             }).then(function (res) {
                 if (res.status === 200) {
                     toastr.success('Primary email successfully changed');
-                    vm.getUserEmails()
+                    vm.getUserEmails();
                 }
             }).catch(function (error) {
                 $scope.loadingUserAccountInfo = false;

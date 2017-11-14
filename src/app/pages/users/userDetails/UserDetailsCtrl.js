@@ -5,7 +5,7 @@
         .controller('UserDetailsCtrl', UserDetailsCtrl);
 
     /** @ngInject */
-    function UserDetailsCtrl($scope,environmentConfig,$http,cookieManagement,$uibModal,_,
+    function UserDetailsCtrl($scope,environmentConfig,$http,cookieManagement,$uibModal,_,toastr,
                              errorHandler,$stateParams,$location,$window,$filter) {
 
         var vm = this;
@@ -41,6 +41,31 @@
             }
         };
         vm.getUser();
+
+        $scope.toggleActivateUser = function(active){
+            if(vm.token) {
+                $scope.loadingUser = true;
+                $http.patch(environmentConfig.API + '/admin/users/' + vm.uuid + '/', {active: active}, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': vm.token
+                    }
+                }).then(function (res) {
+                    if (res.status === 200) {
+                        if(active){
+                            toastr.success('Successfully activated the user');
+                        } else {
+                            toastr.success('Successfully deactivated the user');
+                        }
+                        vm.getUser();
+                    }
+                }).catch(function (error) {
+                    $scope.loadingUser = false;
+                    errorHandler.evaluateErrors(error.data);
+                    errorHandler.handleErrors(error);
+                });
+            }
+        };
 
         $scope.goToSwitchesAndPermissions = function () {
           $location.path('user/' + vm.uuid + '/permissions-settings');

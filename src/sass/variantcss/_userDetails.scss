@@ -1,6 +1,18 @@
 .user-btn-export{
   position: relative;
   top: -34px;
+  right: 15px;
+}
+
+.user-btn-active{
+  position: relative;
+  top: -34px;
+}
+
+.user-btn-deactive{
+  padding: 6px;
+  position: relative;
+  top: -34px;
 }
 
 .copy-clipboard a{
