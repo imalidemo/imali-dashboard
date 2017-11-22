@@ -97,7 +97,7 @@
 
         $scope.updateUserBasicInfo = function(){
             $scope.editingUserBasicInfo = !$scope.editingUserBasicInfo;
-            if(vm.updatedUserBasicInfo.birth_date){
+            if($scope.birthDate.year && $scope.birthDate.month && $scope.birthDate.day){
                 vm.updatedUserBasicInfo.birth_date = $scope.birthDate.year + '-' + $scope.birthDate.month + '-' + $scope.birthDate.day;
             }
 
