@@ -44,6 +44,7 @@ angular.module('BlurAdmin', [
                             getCompanyInfo();
                         } else {
                             $rootScope.userVerified = false;
+                            $location.path('/verification');
                         }
                     });
                 };
