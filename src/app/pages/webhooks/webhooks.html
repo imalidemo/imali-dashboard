@@ -1,9 +1,76 @@
-<content-top></content-top>
-<div class="row" >
-    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
-        <webhooks-settings-menu></webhooks-settings-menu>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <ul class="webhooks-list-navigation-ul">
+                    <li class="service-list-navigation"><h1 class="al-title">Webhooks</h1></li>
+                    <li class="webhooks-list-navigation">
+                        <a href="#/webhooks/list">
+                            <h5 ng-class="{'active-webhooks-nav': locationIndicator == 'list'}" class="pointer">List</h5>
+                        </a>
+                    </li>
+                    <li class="webhooks-list-navigation" >
+                        <a href="#/webhooks/logs">
+                            <h5 ng-class="{'active-webhooks-nav': locationIndicator == 'logs'}" class="pointer">Logs</h5>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-        <div ui-view="webhooksSettingsView"></div>
+</div>
+
+<div ng-hide="editingWebhook || loadingWebhooks">
+    <div ng-show="webhooks.length > 0" ba-panel class="setting-bank-accounts" ba-panel-title="Webhooks" ba-panel-class="light-text with-scroll">
+        <table class="table fees-table table-striped setting-bank-accounts-table">
+            <tr class="black-muted-bg divider">
+                <th><strong>Event</strong></th>
+                <th><strong>URL</strong></th>
+                <th><strong>Secret</strong></th>
+                <th><strong>Condition</strong></th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="webhook in webhooks">
+                <td class="table-row-center transactions-list-element" title="{{webhook.event}}" ng-bind="webhook.event | capitalizeDottedSentence | capitalizeUnderscoredSentence"></td>
+                <td class="table-row-center transactions-list-element" title="{{webhook.url}}" ng-bind="webhook.url"></td>
+                <td class="table-row-center transactions-list-element" title="{{webhook.secret}}" ng-bind="webhook.secret"></td>
+                <td class="table-row-center transactions-list-element" title="{{webhook.condition}}" ng-bind="webhook.condition"></td>
+                <td class="rehive-table-row-last-child">
+                    <button ng-click="openWebhooksModal('app/pages/webhooks/webhooksModal/webhooksModal.html','md',webhook)" class="btn btn-danger pull-right rehive-settings-buttons">Delete</button>
+                    <button ng-click="toggleWebhooksEditView(webhook)" class="btn btn-primary pull-right rehive-settings-buttons">Edit</button>
+                </td>
+            </tr>
+        </table>
     </div>
+    <div ba-panel ba-panel-title="Add webhook" ba-panel-class="light-text with-scroll">
+        <form name="WebhooksForm" class="custom-form">
+            <div class="form-group">
+                <label><strong>Event type</strong> <span class="required-icon">*</span></label>
+                <br>
+                <select class="form-control pointer" ng-model="webhooksParams.event" ng-options="event for event in eventOptions" required>
+                </select>
+            </div>
+            <div class="form-group">
+                <label><strong>Webhook url</strong> <span class="required-icon">*</span></label>
+                <input type="text" ng-model="webhooksParams.url" class="form-control"  placeholder="URL" required>
+            </div>
+            <div class="form-group">
+                <label><strong>Webhook secret</strong> <span class="required-icon">*</span></label>
+                <input type="text" ng-model="webhooksParams.secret" class="form-control"  placeholder="Secret" required>
+            </div>
+            <div class="form-group">
+                <label><strong>Condition</strong></label>
+                <input type="text" ng-model="webhooksParams.condition" class="form-control"  placeholder="Condition">
+            </div>
+            <div class="form-group">
+                <button ng-click="addWebhooks(webhooksParams)" ng-disabled="!WebhooksForm.$valid" class="btn btn-primary dashboard-btn pull-right">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div ng-show="editingWebhook">
+    <edit-webhook></edit-webhook>
+</div>
+<div ba-panel ng-show="loadingWebhooks">
+    <loading-image></loading-image>
 </div>
