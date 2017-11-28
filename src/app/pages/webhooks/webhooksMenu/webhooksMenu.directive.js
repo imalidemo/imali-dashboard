@@ -2,13 +2,13 @@
     'use strict';
 
     angular.module('BlurAdmin.pages.webhooks')
-        .directive('editWebhook', editWebhook);
+        .directive('webhooksMenu', webhooksMenu);
 
     /** @ngInject */
-    function editWebhook() {
+    function webhooksMenu() {
         return {
             restrict: 'E',
-            templateUrl: 'app/pages/webhooks/editWebhook/editWebhook.html'
+            templateUrl: 'app/pages/webhooks/webhooksMenu/webhooksMenu.html'
         };
     }
 })();

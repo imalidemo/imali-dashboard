@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
             <label><strong>Condition</strong></label>
-            <input ng-change="webhookChanged('condition')" type="text" ng-model="editWebhook.condition" class="form-control"  placeholder="Secret" required>
+            <input ng-change="webhookChanged('condition')" type="text" ng-model="editWebhook.condition" class="form-control"  placeholder="Condition">
         </div>
         <div class="form-group">
             <button ng-click="updateWebhook()" ng-disabled="!editWebhooksForm.$valid" class="btn btn-primary dashboard-btn pull-right">Save</button>
