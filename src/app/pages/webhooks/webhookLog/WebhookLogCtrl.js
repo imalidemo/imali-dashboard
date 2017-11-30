@@ -5,7 +5,7 @@
         .controller('WebhookLogCtrl', WebhookLogCtrl);
 
     /** @ngInject */
-    function WebhookLogCtrl($scope,environmentConfig,$http,cookieManagement,errorHandler,$window,$stateParams,serializeFiltersService) {
+    function WebhookLogCtrl($scope,environmentConfig,$http,cookieManagement,errorHandler,$window,$stateParams,$uibModal,serializeFiltersService) {
 
         var vm = this;
         vm.token = cookieManagement.getCookie('TOKEN');
@@ -31,7 +31,6 @@
                     $scope.loadingWebhooks = false;
                     if (res.status === 200) {
                         $scope.webhookTask = res.data.data;
-                        console.log($scope.webhookTask)
                         $window.scrollTo(0, 0);
                     }
                 }).catch(function (error) {
@@ -42,6 +41,20 @@
             }
         };
         vm.getWebhookTask();
+
+        $scope.openWebhookLogModal = function (page, size,webhookTask) {
+            vm.theModal = $uibModal.open({
+                animation: true,
+                templateUrl: page,
+                size: size,
+                controller: 'WebhookLogModalCtrl',
+                resolve: {
+                    webhookTask: function () {
+                        return webhookTask;
+                    }
+                }
+            });
+        };
 
         vm.getWebhookRequestsUrl = function(){
 

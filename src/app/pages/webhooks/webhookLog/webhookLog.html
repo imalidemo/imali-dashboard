@@ -1,6 +1,6 @@
 <div ng-hide="loadingWebhooks">
     <div ba-panel class="setting-bank-accounts" ba-panel-title="Webhook log" ba-panel-class="light-text with-scroll">
-        <table class="table fees-table table-striped setting-bank-accounts-table">
+        <table class="table fees-table table-striped setting-bank-accounts-table table-hover">
             <tr class="black-muted-bg divider">
                 <th><strong>Event</strong></th>
                 <th><strong>URL</strong></th>
@@ -12,7 +12,7 @@
                 <th><strong>Updated</strong></th>
                 <th><strong>Created</strong></th>
             </tr>
-            <tr>
+            <tr class="pointer" ng-click="openWebhookLogModal('app/pages/webhooks/webhookLog/webhookLogModal/webhookLogModal.html','md',webhookTask)">
                 <td class="table-row-center transactions-list-element" title="{{webhookTask.webhook.event}}" ng-bind="webhookTask.webhook.event | capitalizeDottedSentence"></td>
                 <td class="table-row-center transactions-list-element" title="{{webhookTask.webhook.url}}" ng-bind="webhookTask.webhook.url"></td>
                 <td class="table-row-center transactions-list-element" title="{{webhookTask.webhook.secret}}" ng-bind="webhookTask.webhook.secret"></td>
