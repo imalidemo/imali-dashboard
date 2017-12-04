@@ -1,0 +1,19 @@
+<div ng-hide="updatingCompanyDetails" ba-panel ba-panel-title="Webhook shortcuts" class="service-header">
+    <p>Exchanges are triggered by Rehive webhooks. In order to correctly trigger a exchange you should ensure you have at least one webhook of the same
+        event type as the exchange event. All exchange webhooks should be configured with the company secret
+        because it ensures secure communication between Rehive and the service.</p>
+
+    <p class="text-muted">Note: The "secret" field will automatically get filled with the company secret by using the below webhook shortcut buttons
+        or you can manually copy the company secret and paste it in the webhook forms ensuring secure
+        communication between Rehive Platform and the service.</p>
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 rehive-webhook-div-left">
+        <button ng-click="goToGeneralWebhooks(company.secret)" class="btn exchange-webhooks-buttons btn-primary btn-block">General webhooks</button>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 rehive-webhook-div-right">
+        <button ng-click="goToTransactionsWebhooks(company.secret)" class="btn exchange-webhooks-buttons btn-primary btn-block">Transaction webhooks</button>
+    </div>
+</div>
+<div ba-panel ng-show="updatingCompanyDetails" class="service-header">
+    <loading-image></loading-image>
+</div>
