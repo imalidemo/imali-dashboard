@@ -50,7 +50,7 @@
               vm.filterParams += "&email="+$scope.filters.email.replace("+","%2B");
             }
 
-            return 'http://localhost:8000/api/admin/quotes/' + vm.filterParams;
+            return 'http://45.55.183.106:8000/api/admin/quotes/' + vm.filterParams;
             //return vm.baseUrl + 'admin/quotes/' + vm.filterParams;
         };
 
